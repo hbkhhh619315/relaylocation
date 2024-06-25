@@ -29,7 +29,7 @@ St=0.001;
     end
 
 % Creating a Window
-Fig =figure("name","Drones Trajectory new", "position", [100 100 1200 750]);
+Fig =figure("name","AoI Relay", "position", [100 100 1200 750]);
 %Add a pause button
 bt =uicontrol(Fig,'Style','togglebutton','String','||','FontSize',10,'Units','normalized','Position',[0.92,0.3,0.05,0.05],'Callback',@do);
 
@@ -44,14 +44,14 @@ set(gca,'XColor','red');% X-axis color
 hold on;
 % Add a title and tags
 title('scenario');
-xlabel('distant m');
+xlabel('distance m');
 ylabel('');
 
 subplot(2,3,2) %
 axis([0 D 0 0.2]);
 hold on;
 % Add a title and tags
-xlabel("distant m");
+xlabel("distance m");
 ylabel("t");
 title("Age");
 
@@ -59,7 +59,7 @@ subplot(2,3,3) %
 axis([0 D 0 0.2]);
 hold on;
 % Add a title and tags
-xlabel("distant m");
+xlabel("distance m");
 ylabel("t");
 title("Age");
 
@@ -75,7 +75,7 @@ subplot(2,3,5) %
 axis([0 D 0 0.05]);
 hold on;
 % Add a title and tags
-xlabel("distant m");
+xlabel("distance m");
 ylabel("t");
 title("Aoi");
 
@@ -83,7 +83,7 @@ subplot(2,3,6) %
 axis([0 D 0 0.05]);
 hold on;
 % Add a title and tags
-xlabel("distant m");
+xlabel("distance m");
 ylabel("t");
 title("time");
 
@@ -383,17 +383,17 @@ while i < D-1
     i=i+D/cc;
 end
 
-subplot(2,3,3) % 定位窗口
+subplot(2,3,3) % Positioning window
 plot(x,y11,'-om','linewidth',2,'MarkerSize',10);% linear, color, marker, Time consuming to draw theoretical age
 
 plot(x,y12,'-dg','linewidth',2,'MarkerSize',5);% linear, color, marker, Plotting the experimental age
 
-subplot(2,3,5) % 定位窗口
+subplot(2,3,5) % Positioning window
 plot(x,y21,'-om','linewidth',2,'MarkerSize',10);% linear, color, marker, Plotting the theoretical average AoI
 
 plot(x,y22,'-dg','linewidth',2,'MarkerSize',5);% linear, color, marker, Plotting the average AoI of the experiment
 
-subplot(2,3,6) %
+subplot(2,3,6) % Positioning window
 plot(x,tt1,'-sc',x,tt2,'-db','linewidth',4,'MarkerSize',8); % linear, color, marker
 
 figure(2)
@@ -404,11 +404,12 @@ axis square;
 hold on;
 % Add title and tags
 %title('PoA');
-xlabel("distant d (m)",'FontSize',35);
-ylabel('t (s)','FontSize',35);
+% xlabel("length l (m)",'FontSize',35,'FontWeight','bold','FontName','Times New Roman','Color','b');
+xlabel("The length of {\it{l}} (m)",'FontSize',35,'FontName','Times New Roman');
+ylabel('');
 
 plot(x,y11,'--db',x,y12,'--sc',x,y21,'--hg',x,y22,'--om','linewidth',2,'MarkerSize',8); % linear, color, marker
-legend('Network Delay (Theory)','Network Delay (Simulation)','AoI (Theory)','AoI (Simulation)','FontSize',20);   % Upper right corner mark
+legend('Network Delay ({\it{Theory}})','Network Delay ({\it{Simulation}})','AoI ({\it{Theory}})','AoI ({\it{Simulation}})','FontSize',20);   % Upper right corner mark
 grid on
 
 save data x y11 y12 y21 y22 Tr A tt1 tt2
